@@ -1,27 +1,34 @@
+// variables
 var cards = ["queen", "queen", "king", "king"];
 var cardsInPlay = [];
 
-var cardOne = cards[0];
-
-cardsInPlay.push(cardOne);
-
-var cardTwo = cards[2];
-
-cardsInPlay.push(cardTwo);
-
-for( var i = 0 ; i < 2 ; i++)
+// function for game logic
+// only execute if 2 cards in play
+// if 2 cards are the same, match found
+// e;se try again
+var checkForMatch = function()
 {
-	console.log("User flipped " + cardsInPlay[i]);
-}
-
-if(cardsInPlay.length === 2)
-{
-	if(cardsInPlay[0] === cardsInPlay[1])
+	if(cardsInPlay.length === 2)
 	{
-		alert("You found a match!");
-	}
-	else
-	{
-		alert("Sorry, try again.");
+		if(cardsInPlay[0] === cardsInPlay[1])
+		{
+			console.log("You found a match!");
+		}
+		else
+		{
+			console.log("Sorry, try again.");
+		}
 	}
 }
+
+// function to flip card, store and print card flipped
+var flipCard = function(cardId)
+{
+	var cardFlipped = cards[cardId];
+	cardsInPlay.push(cardFlipped);
+	console.log("User flipped " + cards[cardId]);
+	checkForMatch();
+}
+
+flipCard(0);
+flipCard(2);
